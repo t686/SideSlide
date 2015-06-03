@@ -21,6 +21,7 @@ public class PlayerControl : MonoBehaviour {
 	void Update(){
 		if(Input.GetButtonDown("Jump") && isGrounded){ 
 			rb2d.AddForce(new Vector2(0, jumpForce));
+			rb2d.MoveRotation(1 + 30 * Time.fixedDeltaTime);
 		}
 	}
 	
