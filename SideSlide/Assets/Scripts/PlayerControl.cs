@@ -72,4 +72,15 @@ public class PlayerControl : MonoBehaviour {
 		angle += -90.0f;
 
 	}
+
+	public static void LifeDecrenment(int lifeLevel) {
+
+		if (lifeLevel > 0) {
+
+			PLAYER_COMBO -= 1;
+
+		} else {
+			Application.LoadLevel(Application.loadedLevel);
+		}
+	}
 }
