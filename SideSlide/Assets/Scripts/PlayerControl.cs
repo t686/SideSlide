@@ -3,17 +3,19 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
 
+	public static int PLAYER_COMBO = 0;	//TODO: Combo counter;
+
 	public float maxSpeed = 10f;		// The fastest the player can travel in the x axis.
 	public float moveForce = 50f;		// Amount of force added to move the player left and right.
 	public float jumpForce = 150f;		// Amount of force added when the player jumps.
 
-	public bool isGrounded = false;		// Whether or not the player is grounded.
-
-	public float rotSpeed = 10.0f;
-
+	public float rotSpeed = 10.0f;		// Spee
+	private float angle = -90.0f;		
+	
 	private int countJump = 0;
 
-	private float angle = -90.0f;
+	public bool isGrounded = false;		// Whether or not the player is grounded.
+
 
 	//References
 	private Animator anim;
