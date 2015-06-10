@@ -10,6 +10,10 @@ public class GroundCheck : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
+		if(col.tag == this.tag){
+			//Do something
+			Debug.Log(1);
+		}
 		player.isGrounded = true;
 	}
 
