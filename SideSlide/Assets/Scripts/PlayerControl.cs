@@ -3,18 +3,21 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
 
+	public static int PLAYER_COMBO = 0;
+
 	public float maxSpeed = 10f;		// The fastest the player can travel in the x axis.
 	public float moveForce = 50f;		// Amount of force added to move the player left and right.
 	public float jumpForce = 150f;		// Amount of force added when the player jumps.
 
-	public bool isGrounded = false;		// Whether or not the player is grounded.
-
 	public float rotSpeed = 10.0f;
+	private static float angle = 0;
 
+	public bool isGrounded = false;		// Whether or not the player is grounded.
+	
 	private int countJump = 0;
+	private int maxCombo = 10;
 
-	private float angle = -90.0f;
-
+	
 	//References
 	private Animator anim;
 	private Rigidbody2D rb2d;
@@ -22,7 +25,6 @@ public class PlayerControl : MonoBehaviour {
 	void Start(){
 		rb2d = gameObject.GetComponent<Rigidbody2D>();
 		//anim = gameObject.GetComponent<Animator>():
-		//rotVect = new Vector3(0, 0, angle);
 	}
 	
 	void Update(){
@@ -50,7 +52,6 @@ public class PlayerControl : MonoBehaviour {
 			countJump = 0;
 		} 
 
-
 		rb2d.AddForce(Vector2.right * h * moveForce);
 		// If the player's horizontal velocity is greater than the maxSpeed...
 		if(Mathf.Abs(rb2d.velocity.x) > maxSpeed){
@@ -65,7 +66,7 @@ public class PlayerControl : MonoBehaviour {
 	
 	}
 
-	void IncrementAngle() {
+	public static void IncrementAngle() {
 
 		angle += -90.0f;
 
