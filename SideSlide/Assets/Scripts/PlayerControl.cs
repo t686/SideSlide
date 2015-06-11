@@ -10,7 +10,7 @@ public class PlayerControl : MonoBehaviour {
 	public float jumpForce = 150f;		// Amount of force added when the player jumps.
 
 	public float rotSpeed = 10.0f;
-	private float angle = -90.0f;
+	private static float angle = 0;
 
 	public bool isGrounded = false;		// Whether or not the player is grounded.
 	
@@ -25,7 +25,6 @@ public class PlayerControl : MonoBehaviour {
 	void Start(){
 		rb2d = gameObject.GetComponent<Rigidbody2D>();
 		//anim = gameObject.GetComponent<Animator>():
-		//rotVect = new Vector3(0, 0, angle);
 	}
 	
 	void Update(){
@@ -67,7 +66,7 @@ public class PlayerControl : MonoBehaviour {
 	
 	}
 
-	void IncrementAngle() {
+	public static void IncrementAngle() {
 
 		angle += -90.0f;
 
