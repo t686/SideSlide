@@ -15,6 +15,10 @@ public class GroundCheck : MonoBehaviour {
 			Debug.Log(1);
 		}
 		player.isGrounded = true;
+
+		if(col.tag == "Edge") {
+			PlayerControl.IncrementAngle();
+		}
 	}
 
 	void OnTriggerStay2D(Collider2D col){
