@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GroundCheck : MonoBehaviour {
 
+	private string lastTag = "";
+
 	private PlayerControl player;
 
 	void Start(){
@@ -10,11 +12,15 @@ public class GroundCheck : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		if(col.tag == this.tag){
+		if(col.tag == this.tag && !isBounce(this.tag)){
 			//Do something
 			Debug.Log(1);
 		}
 		player.isGrounded = true;
+
+		if(col.tag == "Edge") {
+			PlayerControl.IncrementAngle();
+		}
 	}
 
 	void OnTriggerStay2D(Collider2D col){
@@ -24,5 +30,15 @@ public class GroundCheck : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D col){
 		player.isGrounded = false;
+	}
+
+	public bool isBounce(string tag) {
+		if(lastTag == tag){
+			return true;
+		}
+		else {
+			lastTag = tag;
+			return false;
+		}
 	}
 }
