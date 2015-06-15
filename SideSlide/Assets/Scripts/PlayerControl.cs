@@ -70,12 +70,7 @@ public class PlayerControl : MonoBehaviour {
 		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotSpeed*Time.deltaTime);
 	}
 
-<<<<<<< HEAD
-	void IncrementAngle() {
-=======
 	public static void IncrementAngle() {
-
->>>>>>> dev
 		angle += -90.0f;
 	}
 
