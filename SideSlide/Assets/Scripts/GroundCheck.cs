@@ -13,8 +13,10 @@ public class GroundCheck : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		if(col.tag == this.tag && !isBounce(this.tag)){
-			//Do something
-			Debug.Log(1);
+			Debug.Log("Match");
+			PlayerControl.PLAYER_COMBO++;
+		}else{
+			player.spawnPlayer();
 		}
 		player.isGrounded = true;
 

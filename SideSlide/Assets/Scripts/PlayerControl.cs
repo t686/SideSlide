@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour {
 	private static float angle = 0;
 
 	public bool isGrounded = false;		// Whether or not the player is grounded.
+	private bool heroMode = false;
 	
 	private int countJump = 0;
 	private int maxCombo = 10;
@@ -57,18 +58,37 @@ public class PlayerControl : MonoBehaviour {
 		if(Mathf.Abs(rb2d.velocity.x) > maxSpeed){
 			rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
 		}
+
+		if(PLAYER_COMBO >= maxCombo && !heroMode) {
+			goHeroMode();
+			Debug.Log(11);
+		}
 	}
 
 
 	void Rotate() {
-
 		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotSpeed*Time.deltaTime);
-	
 	}
 
+<<<<<<< HEAD
+	void IncrementAngle() {
+=======
 	public static void IncrementAngle() {
 
+>>>>>>> dev
 		angle += -90.0f;
+	}
 
+	public void spawnPlayer(){
+		if(heroMode == true){
+			heroMode = false;
+			PLAYER_COMBO = 0;
+		}else{
+			//Application.LoadLevel(Application.loadedLevel);
+		}
+	}
+
+	private void goHeroMode(){
+		heroMode = true;
 	}
 }
