@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour {
 	public float moveForce = 50f;		// Amount of force added to move the player left and right.
 	public float jumpForce = 150f;		// Amount of force added when the player jumps.
 
-	public float rotSpeed = 10.0f;
+	public float rotSpeed = 15.0f;
 	private static float angle = 0;
 
 	public bool isGrounded = false;		// Whether or not the player is grounded.
@@ -61,7 +61,6 @@ public class PlayerControl : MonoBehaviour {
 
 		if(PLAYER_COMBO >= maxCombo && !heroMode) {
 			goHeroMode();
-			Debug.Log(11);
 		}
 	}
 
@@ -70,12 +69,7 @@ public class PlayerControl : MonoBehaviour {
 		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, angle), rotSpeed*Time.deltaTime);
 	}
 
-<<<<<<< HEAD
-	void IncrementAngle() {
-=======
 	public static void IncrementAngle() {
-
->>>>>>> dev
 		angle += -90.0f;
 	}
 
