@@ -3,9 +3,11 @@ using System.Collections;
 
 public class GroundCheck : MonoBehaviour {
 
-	private string lastTag = "";
+	private static string lastTag = "hh";
 
 	private PlayerControl player;
+
+	public static bool isOnEdge = false;
 
 	void Start(){
 		player = gameObject.GetComponentInParent<PlayerControl>();
@@ -20,7 +22,9 @@ public class GroundCheck : MonoBehaviour {
 		}
 		player.isGrounded = true;
 
+		
 		if(col.tag == "Edge") {
+			isOnEdge = true;
 			PlayerControl.IncrementAngle();
 		}
 	}
@@ -32,9 +36,11 @@ public class GroundCheck : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D col){
 		player.isGrounded = false;
+		isOnEdge = false;
 	}
 
 	public bool isBounce(string tag) {
+
 		if(lastTag == tag){
 			return true;
 		}
