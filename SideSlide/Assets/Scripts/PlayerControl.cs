@@ -31,7 +31,10 @@ public class PlayerControl : MonoBehaviour {
 	void Update(){
 		if(Input.GetButtonDown("Jump") && isGrounded) { 
 			rb2d.AddForce(new Vector2(0, jumpForce));
-			IncrementAngle();
+
+			if (!GroundCheck.isOnEdge) {
+				IncrementAngle();
+			}
 			countJump += 1;
 		} else if(Input.GetButtonDown("Jump") && countJump<2) {
 			countJump += 1;
